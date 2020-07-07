@@ -19,9 +19,6 @@ excersiseSholderArm = ["Boxing", "Arm circles"]
 excersiseCore = ["Bycicle crunch", "Crunch/sit-up", "Single leg crunch","Double leg raises", "Single leg raises"]
 
 ExcersiseTypeConverter = [exerciseFullBody, exerciseLegs, excersiseChestBack, excersiseSholderArm, excersiseCore]
-##excersiseLengthB = [3, 2, 2, 1, 3, 2, 0, 3, 1, 2, 1]
-
-
 
 
 while excersiseAmount != 0:
