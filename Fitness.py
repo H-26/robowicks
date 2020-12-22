@@ -14,6 +14,7 @@ validExcersiseType = False
 excersiseAmount = int(input("How many excersisies do you want to do?  "))
 Breaks = int(input("How long do you want your breaks (seconds)?  "))
 Work = int(input("How long do you want your work (seconds)?  "))
+excersisesTotal = excersiseAmount
 
 while validExcersiseType == False:
     excersiseType = str(input("Which parts of the body do you want to excersise? (type the numbers you want, you can select multiple)\nFull body: 1\nLegs: 2\nChest and back: 3\nSholders and arms: 4\nCore: 5\n"))
@@ -62,8 +63,15 @@ while excersiseAmount != 0:
     excersise = excersiseType[random.randint(0,(len(excersiseType)-1))]
     
     #Checks if there are any repeats and re-chooses the excersise if there are
-    while excersise in {excersise1, excersise2, excersise3, excersise4, excersise5}:
-        excersise = excersiseType[random.randint(0,(len(excersiseType)-1))]
+    reChooseLoop = 0
+    while reChooseLoop < 5:
+        if (excersise in {excersise1, excersise2, excersise3, excersise4, excersise5}):
+            excersiseTypeNumber = random.choice(excersiseTypes)
+            excersiseType = ExcersiseTypeConverter[excersiseTypeNumber]
+            excersise = excersiseType[random.randint(0,(len(excersiseType)-1))]
+            reChooseLoop = reChooseLoop + 1
+        else:
+            reChooseLoop = 5
 
     #Prints the next excerise
     if excersises == 0:
@@ -71,9 +79,11 @@ while excersiseAmount != 0:
         print("Let's start! The first one is the " + excersise +"!")
     elif excersiseAmount == excersises:
         print("You're halfway there! Next up is the " + excersise +"!")
+    elif (excersises + 1) == excersisesTotal:
+        print("You're on the last excersise! Finish this off with the " + excersise +"!")
     else:
         #Normal message
-        print("Next up is the " + excersise + "!")
+        print("Next up is the " + excersise + "! You're on excersise " + str(excersises + 1) + " of " + str(excersisesTotal) + "!")
     
     time.sleep(Breaks)
     print("Go Go Go!")
